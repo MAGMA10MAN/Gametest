@@ -11,7 +11,7 @@ import time
 
 
 
-#print("EPILEPSY WARNING! PROCEED AT YOUR OWN RISK")
+print("EPILEPSY WARNING! PROCEED AT YOUR OWN RISK")
 
 
 
@@ -81,14 +81,14 @@ def handle_keys():
     player_pos.y += y_vel
     player_pos.x += x_vel
     
-    if player_pos.x >= screen_width+40:
-        player_pos.x = -39
-    if player_pos.y >= screen_height+40:
-        player_pos.y = -39
-    if player_pos.x <= -40:
-        player_pos.x = screen_width +39
-    if player_pos.y <= -40:
-        player_pos.y = screen_height +39
+    if player_pos.x >= screen_width+30:
+        player_pos.x = 30
+    if player_pos.y >= screen_height+30:
+        player_pos.y = 30
+    if player_pos.x <= -30:
+        player_pos.x = screen_width - 30
+    if player_pos.y <= -30:
+        player_pos.y = screen_height - 30
 
     
 
@@ -108,7 +108,19 @@ while running:
     
     screen.fill("white")
     pygame.draw.circle(screen, "blue", player_pos, 35, width = 50)
+    
+    pygame.draw.circle(screen, "blue", (player_pos.x+screen_width,player_pos.y), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x-screen_width,player_pos.y), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x,player_pos.y+screen_height), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x,player_pos.y-screen_height), 35, width = 50)
+    
+    pygame.draw.circle(screen, "blue", (player_pos.x+screen_width,player_pos.y+screen_height), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x-screen_width,player_pos.y-screen_height), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x-screen_width,player_pos.y+screen_height), 35, width = 50)
+    pygame.draw.circle(screen, "blue", (player_pos.x+screen_width,player_pos.y-screen_height), 35, width = 50)
     keys = pygame.key.get_pressed()
+
+
     if keys[pygame.K_k]:
         print("X-dt: " , x_dt)
         print("y_dt: ",y_dt)
